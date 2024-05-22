@@ -204,7 +204,6 @@ class Program
             new double[,] { { 5, 5, 5, 5, 4, 6, 5 }, { 2, 3, 3, 4, 3, 3, 3 },
             { 6, 3, 5, 5, 4, 5, 5 }, { 3, 4, 5, 2, 3, 3, 3 } }, 0);
 
-        // Сортировка спортсменов по итоговой оценке и вывод результатов
         Array.Sort(athletes, (a1, a2) => a2.FinalMark.CompareTo(a1.FinalMark));
 
         Console.WriteLine("Итоговая таблица:");
@@ -234,13 +233,12 @@ public class Group
         Students = new List<Student>();
     }
 
-    // Убрали использование AdditionalSubjects
     public virtual double CalculateAverageScore()
     {
         double totalScore = 0;
         foreach (var student in Students)
         {
-            totalScore += student.CalculateAverageScore(CommonSubjects); // Используем только CommonSubjects
+            totalScore += student.CalculateAverageScore(CommonSubjects); 
         }
         return totalScore / Students.Count;
     }
@@ -335,12 +333,10 @@ class Program
 {
     static void Main()
     {
-        // Создание групп с дополнительными предметами
         Group1 group1 = new Group1(new string[] { "Информатика", "Экономика" });
         Group2 group2 = new Group2(new string[] { "Астрономия", "Материаловедение" });
         Group3 group3 = new Group3(new string[] { "История", "Литература" });
 
-        // Добавление студентов в группы
         group1.Students.Add(new Student("Иванов", new Dictionary<string, int> { { "Математика", 4 }, { "Физика", 3 }, { "Химия", 5 }, { "Информатика", 4 }, { "Экономика", 3 } }));
         group1.Students.Add(new Student("Петров", new Dictionary<string, int> { { "Математика", 3 }, { "Физика", 4 }, { "Химия", 4 }, { "Информатика", 3 }, { "Экономика", 5 } }));
         group1.Students.Add(new Student("Зайцев", new Dictionary<string, int> { { "Математика", 4 }, { "Физика", 3 }, { "Химия", 5 }, { "Информатика", 4 }, { "Экономика", 3 } }));
